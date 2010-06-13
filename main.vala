@@ -6,6 +6,7 @@ public class Main {
         Gtk.init(ref args);
 
         DocumentWindow initialWindow = new DocumentWindow();
+        initialWindow.show();
 
         Gtk.main();
 

@@ -45,9 +45,16 @@ public class DocumentWindow {
         majorBox = new VBox(false, 0);
         majorBox.pack_start(menubar, false, false, 0);
         majorBox.pack_start(docArea, false, false, 0);
-
+        
         docWindow.add(majorBox);
+    }
 
+    public void show(){ 
         docWindow.show_all();
+        docArea.parent_set_callback();
+    }
+
+    public void hide() {
+        docWindow.hide_all();
     }
 }
