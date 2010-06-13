@@ -2,7 +2,7 @@
 #	Author: Patrick Dignan
 #	Makefile for Pepperoni
 #
-sources = main.vala
+sources = main.vala DocumentArea.vala DocumentWindow.vala
 CC = valac -g
 name = pepperoni
 reqs = --pkg gtk+-2.0

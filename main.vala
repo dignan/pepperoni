@@ -5,12 +5,7 @@ public class Main {
 
         Gtk.init(ref args);
 
-        var mainWindow = new Window(WindowType.TOPLEVEL);
-        mainWindow.title = "Pepperoni";
-        mainWindow.position = WindowPosition.CENTER;
-        mainWindow.destroy.connect(Gtk.main_quit);
-
-        mainWindow.show_all();
+        DocumentWindow initialWindow = new DocumentWindow();
 
         Gtk.main();
 
