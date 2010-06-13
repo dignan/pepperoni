@@ -51,7 +51,7 @@ public class DocumentWindow {
 
     public void show(){ 
         docWindow.show_all();
-        docArea.parent_set_callback();
+        docArea.set_cursor();
     }
 
     public void hide() {
