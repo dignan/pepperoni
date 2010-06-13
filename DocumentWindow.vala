@@ -33,6 +33,8 @@ public class DocumentWindow {
         fileMenuSave = new MenuItem.with_label("Save");
         fileMenuExit = new MenuItem.with_label("Exit");
 
+        fileMenuExit.activate.connect(Gtk.main_quit);
+
         fileMenu.append(fileMenuOpen);
         fileMenu.append(fileMenuSave);
         fileMenu.append(fileMenuExit);
