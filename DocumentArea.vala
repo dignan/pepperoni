@@ -10,27 +10,25 @@ public class DocumentArea : DrawingArea {
     private Cairo.Context cfm;
     public Pango.Layout layout;
     private GC gc;
-
-    private int x = 0;
-
+    
     int width = 800;
     int height = 600;
 
     public DocumentArea () {    
-        this.set_size_request(width, height);
+        set_size_request(width, height);
 
-        this.modify_bg(StateType.NORMAL, get_background_color());
+        modify_bg(StateType.NORMAL, get_background_color());
 
-        this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
+        add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                   | Gdk.EventMask.BUTTON_RELEASE_MASK
                   | Gdk.EventMask.POINTER_MOTION_MASK);
                   
-        this.button_release_event.connect(selected_callback);
-        this.expose_event.connect(exposed_callback);
+        button_release_event.connect(selected_callback);
+        expose_event.connect(exposed_callback);
     }
 
     public void set_cursor() {
-        drawableArea = this.get_window();
+        drawableArea = get_window();
         cursor = new Cursor(CursorType.XTERM);
 
         if (drawableArea != null) {
@@ -47,8 +45,6 @@ public class DocumentArea : DrawingArea {
         string hello = "Hello world!";
 
         layout.set_text(hello, -1);
-        stderr.printf("Should be shown...\n");
-
         cairo_update_layout(cfm, layout);
         draw_layout(drawableArea, gc, 5, 5, layout);
     }
@@ -59,15 +55,11 @@ public class DocumentArea : DrawingArea {
     }
 
     private bool exposed_callback() {
-        cfm = Gdk.cairo_create(this.window);
+        cfm = Gdk.cairo_create(window);
         layout = cairo_create_layout(cfm);
         initialize_pango_layout();
 
-        if (x == 1) {
-            add_pango_layout();
-        }
-
-        x++;
+        add_pango_layout();
         
         return true;
     }
