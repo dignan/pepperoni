@@ -18,7 +18,7 @@ public class DocumentWindow {
         docWindow = new Window(WindowType.TOPLEVEL);
         docWindow.set_position(WindowPosition.CENTER);
         docWindow.set_title("Pepperoni");
-        docWindow.destroy.connect(Gtk.main_quit);
+        docWindow.destroy.connect(finish);
 
         /* Menu intialization */        
         menubar = new MenuBar();
@@ -33,7 +33,7 @@ public class DocumentWindow {
         fileMenuSave = new MenuItem.with_label("Save");
         fileMenuExit = new MenuItem.with_label("Exit");
 
-        fileMenuExit.activate.connect(Gtk.main_quit);
+        fileMenuExit.activate.connect(finish);
 
         fileMenu.append(fileMenuOpen);
         fileMenu.append(fileMenuSave);
@@ -56,5 +56,9 @@ public class DocumentWindow {
 
     public void hide() {
         docWindow.hide_all();
+    }
+
+    private void finish () {
+        Gtk.main_quit();
     }
 }
